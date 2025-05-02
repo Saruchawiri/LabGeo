@@ -1,26 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-  <meta charset="utf-8">
-  <title>แผนที่สถานที่น่าสนใจในกรุงเทพฯ</title>
-  <style>
-    #map {
-      height: 600px;
-      width: 100%;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แผนที่ POI ในประเทศไทย</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-WJ-Omh49Bmk7nEeL0qThF6vVwa5ObX8&&callback=initMap" async defer></script>
 </head>
 <body>
-  <h2>แผนที่สถานที่ท่องเที่ยวในกรุงเทพฯ</h2>
   <div id="map"></div>
 
-  <!-- ลิงก์ไฟล์ JavaScript ภายนอก -->
   <script src="script.js"></script>
-
-  <!-- โหลด Google Maps API โดยเรียก initMap() เมื่อโหลดเสร็จ -->
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-WJ-Omh49Bmk7nEeL0qThF6vVwa5ObX8&&callback=initMap">
-  </script>
 </body>
 </html>
-
