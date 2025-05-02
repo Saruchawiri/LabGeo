@@ -1,14 +1,12 @@
-var map;
+let map;
 
 function initMap() {
-  // กำหนดจุดเริ่มต้นของแผนที่ (กรุงเทพฯ)
   map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 13.7563, lng: 100.5018 },  // กำหนดที่ตั้งของแผนที่เริ่มต้น
+    center: { lat: 13.7563, lng: 100.5018 },
     zoom: 12
   });
 
-  // สถานที่ POI
-  var poiLocations = [
+  const poiLocations = [
     { 
       name: "อนุสาวรีย์ประชาธิปไตย", 
       lat: 13.7613, 
@@ -46,20 +44,37 @@ function initMap() {
     }
   ];
 
-  // การสร้าง Marker และ InfoWindow สำหรับแต่ละ POI
   poiLocations.forEach(function(poi) {
-    var marker = new google.maps.Marker({
-      position: {lat: poi.lat, lng: poi.lng},
+    const marker = new google.maps.Marker({
+      position: { lat: poi.lat, lng: poi.lng },
       map: map,
       title: poi.name
     });
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: "<h3>" + poi.name + "</h3><p>" + poi.description + "</p><a href='" + poi.url + "' target='_blank'>เพิ่มเติม</a>"
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<h3>${poi.name}</h3><p>${poi.description}</p><a href="${poi.url}" target="_blank">เพิ่มเติม</a>`
     });
 
     marker.addListener('click', function() {
       infoWindow.open(map, marker);
     });
   });
+
+  // ปักหมุดตำแหน่งของฉัน (ตัวอย่าง: สยามพารากอน)
+  const myLocation = { lat: 13.7460, lng: 100.5345 };
+  const myMarker = new google.maps.Marker({
+    position: myLocation,
+    map: map,
+    title: "ตำแหน่งของฉัน",
+    icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+  });
+
+  const myInfoWindow = new google.maps.InfoWindow({
+    content: "<h3>ตำแหน่งของฉัน</h3><p>นี่คือตำแหน่งปัจจุบันของฉัน (ตัวอย่าง)</p>"
+  });
+
+  myMarker.addListener('click', function() {
+    myInfoWindow.open(map, myMarker);
+  });
 }
+
